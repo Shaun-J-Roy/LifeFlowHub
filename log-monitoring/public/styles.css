@@ -1,0 +1,72 @@
+/* General Styles */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden;
+}
+
+/* Background Video */
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -2;
+}
+
+/* Dark Overlay */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+/* Hero Section */
+.hero {
+    height: 40vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Filter and Log Entry Panel */
+.filter-panel, .log-entry-panel {
+    background: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Log Display Container */
+.log-container {
+    background: #ffffff;
+    border-radius: 8px;
+    height: 400px;
+    overflow-y: auto;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Log Output */
+.log-output {
+    height: 350px;
+    overflow-y: auto;
+    padding: 10px;
+    background: #e9ecef;
+    border-radius: 5px;
+}
+
+/* Footer */
+.footer {
+    padding: 20px;
+    background: #343a40;
+    color: white;
+    margin-top: 20px;
+}

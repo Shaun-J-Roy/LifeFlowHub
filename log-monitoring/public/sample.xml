@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="sample.xsl" type="text/xsl"?>
+<lifeflow_features xmlns="http://www.lifeflowhubbyshaun.com">
+  <feature>
+    <name>Time Tracking</name>
+    <description>Track your daily activities with ease.</description>
+    <importance>High</importance>
+    <user_rating>4.8</user_rating>
+  </feature>
+  <feature>
+    <name>Goal Setting</name>
+    <description>Set and monitor personal and professional goals.</description>
+    <importance>Medium</importance>
+    <user_rating>4.4</user_rating>
+  </feature>
+  <feature>
+    <name>Mindfulness</name>
+    <description>Daily reminders and exercises for mindfulness.</description>
+    <importance>High</importance>
+    <user_rating>4.9</user_rating>
+  </feature>
+  <feature>
+    <name>Budget Tracker</name>
+    <description>Manage your expenses efficiently.</description>
+    <importance>Low</importance>
+    <user_rating>3.8</user_rating>
+  </feature>
+  <feature>
+    <name>Fitness Tracker</name>
+    <description>Log workouts and monitor fitness goals.</description>
+    <importance>Medium</importance>
+    <user_rating>4.2</user_rating>
+  </feature>
+    <feature>
+    <name>Budget Tracker</name>
+    <description>Manage your expenses efficiently.</description>
+    <importance>Low</importance>
+    <user_rating>3.8</user_rating>
+  </feature>
+  <feature>
+    <name>Fitness Tracker</name>
+    <description>Log workouts and monitor fitness goals.</description>
+    <importance>Medium</importance>
+    <user_rating>4.2</user_rating>
+  </feature>
+</lifeflow_features>

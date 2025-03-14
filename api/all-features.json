@@ -1,0 +1,39 @@
+[
+  {
+    "id": "habit-tracking",
+    "title": "Habit Tracking",
+    "shortDescription": "Daily, weekly, and monthly habit tracking with streaks and rewards.",
+    "icon": "chart-line"
+  },
+  {
+    "id": "goal-setting",
+    "title": "Goal Setting",
+    "shortDescription": "SMART goal templates with milestones and actionable tasks.",
+    "icon": "bullseye"
+  },
+  {
+    "id": "health-tracking",
+    "title": "Health Tracking",
+    "shortDescription": "Monitor activities, nutrition, sleep, and overall wellness.",
+    "icon": "heartbeat"
+  },
+  {
+    "id": "academic-planning",
+    "title": "Academic Planning",
+    "shortDescription": "Manage assignments, study schedules, and project deadlines.",
+    "icon": "graduation-cap"
+  },
+  {
+    "id": "time-management",
+    "title": "Time Management",
+    "shortDescription": "Track how you spend your time and optimize your daily schedule.",
+    "icon": "clock"
+  },
+  {
+    "id": "mood-tracking",
+    "title": "Mood Tracking",
+    "shortDescription": "Monitor your emotional well-being and identify patterns.",
+    "icon": "smile"
+  }
+]
+

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeFlowHub - Features</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background-color: rgba(244, 244, 244, 0.8);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+        }
+        .parallax-hero {
+            background-image: url('Features image.jpg');
+            height: 100vh;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+        }
+        .hero-content {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .features {
+            padding: 4rem 0;
+            background-color: #fff;
+        }
+        .features h2 {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .feature-item {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .feature-item h3 {
+            margin-bottom: 1rem;
+        }
+        .feature-detail {
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .feature-detail h3 {
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+        .feature-detail ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .feature-detail li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+        .feature-detail li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+        }
+        #habit-chart {
+            width: 100%;
+            height: 300px;
+            margin: 20px auto;
+        }
+        #habit-chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+        #habit-chart-title {
+            text-align: center;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        footer {
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .loading {
+            text-align: center;
+            padding: 20px;
+        }
+        .loading::after {
+            content: "Loading...";
+            display: inline-block;
+            animation: dots 1.5s infinite;
+        }
+        @keyframes dots {
+            0%, 20% { content: "Loading."; }
+            40% { content: "Loading.."; }
+            60% { content: "Loading..."; }
+            80%, 100% { content: "Loading...."; }
+        }
+        .feature-details-btn {
+            margin-top: 10px;
+            background-color: #6c757d;
+        }
+        .feature-details-btn:hover {
+            background-color: #5a6268;
+        }
+        #feature-details-container {
+            margin-top: 2rem;
+        }
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+            nav ul {
+                margin-top: 1rem;
+            }
+            nav ul li {
+                margin-left: 0;
+                margin-right: 20px;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .hero-content p {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <h1><a href="LifeFlowHub.html">LifeFlowHub</a></h1>
+            <ul>
+                <li><a href="LifeFlowHub.html">Home</a></li>
+                <li><a href="LifeFeatures.html">Features</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="modulesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-cubes"></i> Modules
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="modulesDropdown">
+                        <li><a class="dropdown-item" href="LifeModules.html">All Modules</a></li>
+                        <li><a class="dropdown-item" href="LifeFood.html">Food Calorie Tracker</a></li>
+                    </ul>
+                <li><a href="LifeIntergrations.html">Integrations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="parallax-hero">
+            <div class="hero-content">
+                <h1>LifeFlowHub Features</h1>
+                <p>Discover the powerful features that make LifeFlowHub your ultimate life management platform.</p>
+                <a href="#features" class="btn">Explore Features</a>
+            </div>
+        </section>
+
+        <section id="features" class="features">
+            <div class="container">
+                <h2>Our Key Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <h3>Habit Tracking</h3>
+                        <p>Daily, weekly, and monthly habit tracking with streaks and rewards.</p>
+                        <button class="btn feature-details-btn" data-feature-id="habit-tracking">Learn More</button>
+                        <div id="feature-habit-tracking-details"></div>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Goal Setting</h3>
+                        <p>SMART goal templates with milestones and actionable tasks.</p>
+                        <button class="btn feature-details-btn" data-feature-id="goal-setting">Learn More</button>
+                        <div id="feature-goal-setting-details"></div>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Health Tracking</h3>
+                        <p>Monitor activities, nutrition, sleep, and overall wellness.</p>
+                        <button class="btn feature-details-btn" data-feature-id="health-tracking">Learn More</button>
+                        <div id="feature-health-tracking-details"></div>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Academic Planning</h3>
+                        <p>Manage assignments, study schedules, and project deadlines.</p>
+                        <button class="btn feature-details-btn" data-feature-id="academic-planning">Learn More</button>
+                        <div id="feature-academic-planning-details"></div>
+                    </div>
+                </div>
+
+                <div id="feature-details-container"></div>
+
+                <div class="feature-detail">
+                    <h3>Habit Tracking</h3>
+                    <p>Our habit tracking feature helps you build and maintain positive habits consistently. With LifeFlowHub, you can:</p>
+                    <ul>
+                        <li>Create custom habits tailored to your personal goals</li>
+                        <li>Set daily, weekly, or monthly tracking intervals</li>
+                        <li>Visualize your progress with intuitive charts and graphs</li>
+                        <li>Earn streak rewards to stay motivated</li>
+                        <li>Receive gentle reminders to keep you on track</li>
+                        <li>Analyze your habit formation patterns over time</li>
+                    </ul>
+                    <div id="habit-chart-container">
+                        <div id="habit-chart-title">Weekly Habit Completion</div>
+                        <canvas id="habit-chart"></canvas>
+                    </div>
+                </div>
+
+                <div class="feature-detail">
+                    <h3>Goal Setting</h3>
+                    <p>Achieve your dreams with our comprehensive goal-setting tools. LifeFlowHub empowers you to:</p>
+                    <ul>
+                        <li>Create SMART (Specific, Measurable, Achievable, Relevant, Time-bound) goals</li>
+                        <li>Break down large goals into manageable milestones</li>
+                        <li>Set short-term and long-term objectives</li>
+                        <li>Track your progress with visual goal thermometers</li>
+                        <li>Celebrate achievements with virtual badges and rewards</li>
+                        <li>Adjust your goals as needed with flexible planning tools</li>
+                    </ul>
+                </div>
+
+                <div class="feature-detail">
+                    <h3>Health Tracking</h3>
+                    <p>Take control of your well-being with our health tracking features. With LifeFlowHub, you can:</p>
+                    <ul>
+                        <li>Log daily activities and exercises</li>
+                        <li>Track nutritional intake and hydration levels</li>
+                        <li>Monitor sleep patterns and quality</li>
+                        <li>Record vital signs and health metrics</li>
+                        <li>Set and track fitness goals</li>
+                        <li>Integrate with popular fitness devices and apps</li>
+                    </ul>
+                </div>
+
+                <div class="feature-detail">
+                    <h3>Academic Planning</h3>
+                    <p>Excel in your studies with our powerful academic planning tools. LifeFlowHub allows you to:</p>
+                    <ul>
+                        <li>Organize assignments and projects by course</li>
+                        <li>Create detailed study schedules</li>
+                        <li>Set reminders for important deadlines</li>
+                        <li>Track your grades and academic progress</li>
+                        <li>Use Pomodoro timers for focused study sessions</li>
+                        <li>Collaborate with classmates on group projects</li>
+                    </ul>
+                </div>
+                
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>DUMMY WEBSITE by SHAUN</p>
+        </div>
+    </footer>
+
+    <script>
+        // Habit Tracker Chart (unchanged)
+        const ctx = document.getElementById('habit-chart').getContext('2d');
+        const data = Array.from({length: 7}, () => Math.floor(Math.random() * 100));
+        const labels = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+        const colors = [
+            '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#FF6384'
+        ];
+
+        function drawChart() {
+            ctx.canvas.width = ctx.canvas.offsetWidth;
+            ctx.canvas.height = ctx.canvas.offsetHeight;
+
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+            const maxValue = Math.max(...data);
+            const barWidth = (ctx.canvas.width - 40) / data.length; // Leave space for y-axis
+            const chartHeight = ctx.canvas.height - 40; // Leave space for x-axis labels
+
+            // Draw bars
+            data.forEach((value, index) => {
+                const barHeight = (value / maxValue) * chartHeight;
+                ctx.fillStyle = colors[index];
+                ctx.fillRect(40 + index * barWidth, chartHeight - barHeight, barWidth - 5, barHeight);
+            });
+
+            // Draw x-axis labels
+            ctx.fillStyle = '#333';
+            ctx.font = '12px Arial';
+            ctx.textAlign = 'center';
+            labels.forEach((label, index) => {
+                ctx.fillText(label, 40 + index * barWidth + barWidth / 2, ctx.canvas.height - 10);
+            });
+
+            // Draw y-axis labels
+            ctx.textAlign = 'right';
+            ctx.textBaseline = 'middle';
+            for (let i = 0; i <= 100; i += 25) {
+                const y = chartHeight - (i / 100) * chartHeight;
+                ctx.fillText(i + '%', 35, y);
+            }
+
+            // Draw y-axis line
+            ctx.beginPath();
+            ctx.moveTo(40, 0);
+            ctx.lineTo(40, chartHeight);
+            ctx.stroke();
+
+            // Draw x-axis line
+            ctx.beginPath();
+            ctx.moveTo(40, chartHeight);
+            ctx.lineTo(ctx.canvas.width, chartHeight);
+            ctx.stroke();
+        }
+
+        drawChart();
+
+        // Make the chart responsive
+        window.addEventListener('resize', drawChart);
+
+        // Add interactivity
+        ctx.canvas.addEventListener('mousemove', (event) => {
+            const rect = ctx.canvas.getBoundingClientRect();
+            const x = event.clientX - rect.left - 40; // Adjust for y-axis space
+            const y = event.clientY - rect.top;
+            const index = Math.floor(x / ((ctx.canvas.width - 40) / data.length));
+
+            if (index >= 0 && index < data.length) {
+                ctx.canvas.title = `${labels[index]}: ${data[index]}%`;
+            } else {
+                ctx.canvas.title = '';
+            }
+        });
+
+        // Smooth scrolling for the "Explore Features" button
+        document.querySelector('a[href="#features"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
+    
+    <!-- Include the AJAX implementation -->
+    <script src="ajax-features.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started with LifeFlowHub</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        header {
+            background-color: #f4f4f4;
+            padding: 1rem 0;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+        }
+        .hero {
+            background-color: #e9ecef;
+            text-align: center;
+            padding: 4rem 0;
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            display: inline-block;
+            background-color: transparent;
+            border: 1px solid #007bff;
+            color: #007bff;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .btn:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .get-started-steps {
+            padding: 4rem 0;
+        }
+        .step {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+        }
+        .step h2 {
+            color: #007bff;
+            margin-bottom: 1rem;
+        }
+        footer {
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+            }
+            nav ul {
+                margin-top: 1rem;
+            }
+            nav ul li {
+                margin-left: 0;
+                margin-right: 20px;
+            }
+        }
+        #map {
+            height: 400px;
+            width: 100%;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <h1><a href="index.html">LifeFlowHub</a></h1>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="LifeFeatures.html">Features</a></li>
+                <li><a href="LifeModules.html">Modules</a></li>
+                <li><a href="LifeIntergrations.html">Integrations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Get Started with LifeFlowHub</h1>
+                <p>Begin your journey to a more organized and fulfilling life in just a few simple steps.</p>
+            </div>
+        </section>
+
+        <section class="get-started-steps">
+            <div class="container">
+                <div class="step">
+                    <h2>Step 1: Sign Up for an Account</h2>
+                    <p>Click on the "Sign Up" button. Fill in your basic information to create your LifeFlowHub account. It's quick, easy, and free to get started!</p>
+                </div>
+
+                <div class="step">
+                    <h2>Step 2: Complete Your Profile</h2>
+                    <p>Once you're logged in, take a moment to complete your profile. This helps us personalize your experience and provide more accurate recommendations.</p>
+                </div>
+
+                <div class="step">
+                    <h2>Step 3: Set Your First Goal</h2>
+                    <p>Navigate to the Goal Setting module and create your first goal. Remember to make it SMART: Specific, Measurable, Achievable, Relevant, and Time-bound.</p>
+                </div>
+
+                <div class="step">
+                    <h2>Step 4: Establish a Habit</h2>
+                    <p>Head over to the Habit Tracking module and set up a new habit you'd like to develop. Start small and build consistency over time.</p>
+                </div>
+
+                <div class="step">
+                    <h2>Step 5: Explore Other Modules</h2>
+                    <p>Take some time to explore the Health and Wellness Tracker and the Educational and Academic Planner. Input your data and see how LifeFlowHub can help you in these areas.</p>
+                </div>
+
+                <div class="step">
+                    <h2>Step 6: Connect with Others</h2>
+                    <p>Check out our Social Features to connect with friends or join groups with similar goals. Accountability and support can significantly boost your progress!</p>
+                </div>
+
+                <div class="step">
+                    <h2>Step 7: Review and Adjust</h2>
+                    <p>After a week of using LifeFlowHub, take some time to review your progress and adjust your goals or habits as needed. Remember, it's all about continuous improvement!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="hero">
+            <div class="container">
+                <h2>Ready to Transform Your Life?</h2>
+                <p>Join thousands of users who are already achieving their goals with LifeFlowHub.</p>
+                <a href="SignupForm.html" class="btn">Sign Up Now</a>
+            </div>
+        </section>
+        <section class="get-started-steps">
+            <div class="container">
+                <div class="step">
+                    <h2>LifeFlowHub Headquarters</h2>
+                    <p>Our central hub is located at Christ University Central Campus, Bangalore:</p><br>
+                    <center><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31108.44768212021!2d77.56807997431639!3d12.936236200000007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae15b277a93807%3A0x88518f37b39dabd0!2sChrist%20University!5e0!3m2!1sen!2sin!4v1740736594734!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </center>
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; DUMMY WEBSITE by SHAUN</p>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+        const lat = 12.9344;
+        const lng = 77.6069;
+
+        function initMap() {
+            const map = L.map('map').setView([lat, lng], 15);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            const marker = L.marker([lat, lng]).addTo(map);
+            marker.bindPopup("<b>LifeFlowHub Headquarters</b><br>Christ University Central Campus, Bangalore").openPopup();
+
+            document.getElementById('location-display').textContent = `LifeFlowHub Headquarters: ${lat.toFixed(4)}, ${lng.toFixed(4)} (Christ University Central Campus, Bangalore)`;
+        }
+
+        window.onload = initMap;
+    </script>
+</body>
+</html>
+
