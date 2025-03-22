@@ -1,62 +1,59 @@
+// Connect to WebSocket server
 const socket = new WebSocket("ws://localhost:3000");
-const logContainer = document.getElementById("log-container");
-const filterSelect = document.getElementById("filter");
-const logTypeSelect = document.getElementById("logType");
-const logMessageInput = document.getElementById("logMessage");
 
-let logs = [];
+socket.onopen = () => console.log(" Connected to WebSocket");
 
-// WebSocket connection to receive logs
+let logs = []; // Initialize logs array
+
 socket.onmessage = (event) => {
-    const { type, data } = JSON.parse(event.data);
-
-    if (type === "initial" || type === "update") {
-        logs = data;
-        renderLogs();
-    } else if (type === "new-log") {
-        logs.push(data);
-        renderLogs();
+    const data = JSON.parse(event.data);
+    if (data.type === "update" || data.type === "initial") {
+        logs = data.data; // Assign received logs
+        updateLogs();
+    } else if (data.type === "new-log") {
+        logs.push(data.data);
+        updateLogs();
     }
 };
 
-// Filter logs when dropdown changes
-filterSelect.addEventListener("change", renderLogs);
+socket.onerror = (error) => console.error(" WebSocket Error:", error);
+socket.onclose = () => console.log(" WebSocket closed");
 
-function renderLogs() {
-    logContainer.innerHTML = "";
-    const selectedType = filterSelect.value;
+// Function to update logs on the page
+function updateLogs() {
+    console.log("Updating logs:", logs); // Debugging line
+    const logContainer = document.getElementById("log-container");
+    const filterSelect = document.getElementById("filter");
+    const selectedType = filterSelect ? filterSelect.value : "ALL";
 
-    logs.forEach(log => {
-        if (selectedType === "ALL" || log.includes(`[${selectedType}]`)) {
-            const logEntry = document.createElement("p");
-            logEntry.className = "log-item";
-            logEntry.textContent = log;
-            logContainer.appendChild(logEntry);
-        }
-    });
+    logContainer.innerHTML = logs
+        .filter(log => selectedType === "ALL" || log.includes(`[${selectedType}]`))
+        .map(log => `<p>${log}</p>`)
+        .join("");
 }
 
-// Function to send logs to the server (Now using POST request)
-function sendLog() {
-    const logType = logTypeSelect.value;
-    const logMessage = logMessageInput.value.trim();
+// Event listener for filter selection
+const filterSelect = document.getElementById("filter");
+if (filterSelect) {
+    filterSelect.addEventListener("change", updateLogs);
+}
+
+// Function to send a log message to the WebSocket server
+window.sendLog = function () {
+    const logType = document.getElementById("logType").value;
+    const logMessage = document.getElementById("logMessage").value.trim();
 
     if (!logMessage) {
         alert("Please enter a log message!");
         return;
     }
 
-    fetch("/log", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ type: logType, message: logMessage })
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        logMessageInput.value = ""; // Clear input after submission
-    })
-    .catch(error => console.error("Error:", error));
-}
+    if (socket.readyState === WebSocket.OPEN) {
+        console.log(" Sending log:", { type: logType, message: logMessage });
+        socket.send(JSON.stringify({ type: logType, message: logMessage }));
+    } else {
+        console.error(" WebSocket is not open! Log not sent.");
+    }
+
+    document.getElementById("logMessage").value = "";
+};

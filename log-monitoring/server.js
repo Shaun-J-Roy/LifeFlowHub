@@ -12,6 +12,12 @@ const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
 const LOG_FILE = path.join(__dirname, "logs.txt");
+let logs = [];
+
+// Load existing logs from file
+if (fs.existsSync(LOG_FILE)) {
+    logs = fs.readFileSync(LOG_FILE, "utf8").split("\n").filter(Boolean);
+}
 
 // Middleware
 app.use(cors());
@@ -29,8 +35,8 @@ app.get("/", (req, res) => {
 // MySQL Database Connection
 const db = mysql.createConnection({
     host: "localhost",
-    user: "root",  // Change this if you have a different username
-    password: "root", // Set your MySQL password here
+    user: "root",  
+    password: "root", 
     database: "lifeflowhub"
 });
 
@@ -42,7 +48,7 @@ db.connect(err => {
     console.log("Connected to MySQL Database");
 });
 
-// Ensure users table exists
+// If user table doesn't exist
 const createTableQuery = `
     CREATE TABLE IF NOT EXISTS users (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -85,19 +91,22 @@ wss.on("connection", (ws) => {
     console.log("Client connected");
 
     // Send initial logs
-    fs.readFile(LOG_FILE, "utf8", (err, data) => {
-        if (!err) ws.send(JSON.stringify({ type: "initial", data: data.split("\n") }));
-    });
+    ws.send(JSON.stringify({ type: "initial", data: logs }));
 
-    // Watch for log file changes
-    fs.watchFile(LOG_FILE, { interval: 1000 }, () => {
-        fs.readFile(LOG_FILE, "utf8", (err, data) => {
-            if (!err) {
-                wss.clients.forEach(client => {
-                    if (client.readyState === WebSocket.OPEN) {
-                        client.send(JSON.stringify({ type: "update", data: data.split("\n") }));
-                    }
-                });
+    ws.on("message", (message) => {
+        console.log("📩 Received log:", message);
+        
+        const log = JSON.parse(message);
+        const logEntry = `[${new Date().toISOString()}] [${log.type}]: ${log.message}`;
+        logs.push(logEntry);
+
+        // Append log to file
+        fs.appendFileSync(LOG_FILE, logEntry + "\n");
+
+        // Broadcast new log to all clients
+        wss.clients.forEach(client => {
+            if (client.readyState === WebSocket.OPEN) {
+                client.send(JSON.stringify({ type: "new-log", data: logEntry }));
             }
         });
     });
